@@ -1,0 +1,44 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Blog {
+  id: ID!
+  title: String!
+  description: String!
+  author: String!
+  email: String
+  createdDate: DateTime!
+  updatedDate: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Query {
+  getAllBlogs: [Blog!]!
+  getBlogById(id: ID!): Blog!
+  getBlogByAuthor(author: String): [Blog!]!
+}
+
+type Mutation {
+  createBlog(createBlogDTO: CreateBlogDTO!): Blog!
+  updateBlog(id: ID!, updateBlogDto: UpdateBlogDTO!): Blog!
+  removeBlog(id: ID!): Blog!
+}
+
+input CreateBlogDTO {
+  title: String!
+  description: String!
+  author: String! = "Unknown"
+  email: String
+}
+
+input UpdateBlogDTO {
+  title: String
+  description: String
+  author: String = "Unknown"
+  email: String
+}
